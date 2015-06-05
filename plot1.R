@@ -1,3 +1,5 @@
+## Exploratory Data Analysis  Course Project 1
+
 # Make sure needed packages loaded
 if ( !(require(dplyr) && require(lubridate)) ) {
     stop ("You need to install the dplyr, lubridate packages to run this script")
@@ -16,13 +18,6 @@ dataDir <- "./data"      # This is where the files will be unzipped to
 # unzip the files (will do nothing if we previously did this)
 filepaths <- unzip(zipFile, exdir="./data")
 
-
-
-
-##########################
-
-
-## Exploratory Data Analysis  Course Project 1
 
 ## Read downloaded file 
 

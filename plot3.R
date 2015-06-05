@@ -1,9 +1,22 @@
-library(dplyr)
-library(lubridate)
-## Requires DPLYR package
-
-
 ## Exploratory Data Analysis  Course Project 1
+
+# Make sure needed packages loaded
+if ( !(require(dplyr) && require(lubridate)) ) {
+    stop ("You need to install the dplyr, lubridate packages to run this script")
+}
+
+# only download if zip file has not been downloaded before
+if ( !file.exists(zipFile) ) {
+    download.file(sourceUrl, zipFile)
+}
+
+## download and unzip file to ./data folder
+sourceUrl <- "http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+zipFile <- "household_power_consumption.zip"  # file to be downloaded
+dataDir <- "./data"      # This is where the files will be unzipped to
+
+# unzip the files (will do nothing if we previously did this)
+filepaths <- unzip(zipFile, exdir="./data")
 
 ## Read downloaded file 
 
