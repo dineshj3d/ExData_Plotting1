@@ -5,15 +5,15 @@ if ( !(require(dplyr) && require(lubridate)) ) {
     stop ("You need to install the dplyr, lubridate packages to run this script")
 }
 
-# only download if zip file has not been downloaded before
-if ( !file.exists(zipFile) ) {
-    download.file(sourceUrl, zipFile)
-}
-
 ## download and unzip file to ./data folder
 sourceUrl <- "http://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 zipFile <- "household_power_consumption.zip"  # file to be downloaded
 dataDir <- "./data"      # This is where the files will be unzipped to
+
+# only download if zip file has not been downloaded before
+if ( !file.exists(zipFile) ) {
+    download.file(sourceUrl, zipFile)
+}
 
 # unzip the files (will do nothing if we previously did this)
 filepaths <- unzip(zipFile, exdir="./data")
@@ -42,7 +42,8 @@ filter(dataEpc2007,Date == '2/1/2007')
 filter(dataEpc2007,Date == '2/2/2007')
 
 ## add a Weekday column "Mon", "Tue" etc
-dataEpc2007 <- mutate(dataEpc2007, Weekday = wday(mdy(Date), label = TRUE, abbr = TRUE))
+dataEpc2007 <- mutate(dataEpc2007, Weekday = wday(ymd(Date), label = TRUE, abbr = TRUE))
+dataEpc2007$Weekday = as.character(dataEpc2007$Weekday)
 ## add Timestamp column
 dataEpc2007 <- transform(dataEpc2007, Timestamp=as.POSIXct(paste(Date, Time)))
 
