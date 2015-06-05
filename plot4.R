@@ -52,7 +52,7 @@ dataEpc2007$Sub_metering_3 = as.numeric(dataEpc2007$Sub_metering_3)
 dataEpc2007$Date = as.Date(mdy(dataEpc2007$Date))
 
 ## add a Weekday column "Mon", "Tue" etc
-dataEpc2007 <- mutate(dataEpc2007, Weekday = wday(mdy(Date), label = TRUE, abbr = TRUE))
+dataEpc2007 <- mutate(dataEpc2007, Weekday = wday(ymd(Date), label = TRUE, abbr = TRUE))
 dataEpc2007$Weekday = as.character(dataEpc2007$Weekday)
 
 ## add Timestamp column
