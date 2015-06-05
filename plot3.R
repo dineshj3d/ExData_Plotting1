@@ -64,9 +64,9 @@ rm(dataEpc)
 ## Plot 3
 
 plot(dataEpc2007$Timestamp,dataEpc2007$Sub_metering_1
-     ,ylab = "Global Active Power (kilowatts)",xlab="",type="l",ylim=c(0.5, 40))
-lines(dataEpc2007$Timestamp,dataEpc2007$Sub_metering_2)
-lines(dataEpc2007$Timestamp,dataEpc2007$Sub_metering_3)
+     ,ylab = "Global Active Power (kilowatts)",xlab="",type="l",ylim=c(-1, 40))
+lines(dataEpc2007$Timestamp,dataEpc2007$Sub_metering_2,col=2)
+lines(dataEpc2007$Timestamp,dataEpc2007$Sub_metering_3,col=4)
 
 dev.copy(png, file="plot3.png")  ## write plot to fill
 dev.off ## close pdf file device
